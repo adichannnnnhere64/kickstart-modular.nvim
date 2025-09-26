@@ -1,21 +1,29 @@
 return {
   {
+    -- Plugin
     'stevearc/oil.nvim',
-    ---@module 'oil'
+    lazy = false,
+
+    -- Setup
     ---@type oil.SetupOpts
-    opts = {},
-    init = function()
-      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-    end,
-    view_options = {
-      -- Show files and directories that start with "."
-      show_hidden = true,
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
     },
 
-    -- Optional dependencies
-    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
+    -- Keys
+    keys = {
+      {
+        '-',
+        '<CMD>Oil<CR>',
+        mode = 'n',
+        desc = 'Open parent directory',
+      },
+    },
+
+    dependencies = {
+      { 'echasnovski/mini.icons', opts = {} },
+    },
   },
 }

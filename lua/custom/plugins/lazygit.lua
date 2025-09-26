@@ -1,5 +1,6 @@
 return {
   {
+    -- Plugin
     'kdheepak/lazygit.nvim',
     lazy = true,
     cmd = {
@@ -9,6 +10,12 @@ return {
       'LazyGitFilter',
       'LazyGitFilterCurrentFile',
     },
+
+    -- Keys
+    keys = {
+      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+    },
+
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
