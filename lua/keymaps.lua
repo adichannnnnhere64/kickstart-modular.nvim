@@ -52,9 +52,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim: ts=2 sts=2 sw=2 et
-
--- LAZY GIT KEYMAP
 --
---
-
-vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Open Lazy Git' })
+-- escape when pressed jk.
+vim.keymap.set('i', 'jk', '<ESC>')
+-- escape on terminal using jk
+vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { noremap = true })
