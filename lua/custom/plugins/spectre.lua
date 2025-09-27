@@ -1,12 +1,21 @@
 return {
   {
     'nvim-pack/nvim-spectre',
-    config = function()
-      color_devicons = true
-
-      vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+    lazy = true,
+    cmd = { 'Spectre' },
+    keys = {
+      {
+        '<leader>S',
+        function()
+          require('spectre').toggle()
+        end,
         desc = 'Toggle Spectre',
-      })
+      },
+    },
+    config = function()
+      require('spectre').setup {
+        color_devicons = true,
+      }
     end,
   },
 }

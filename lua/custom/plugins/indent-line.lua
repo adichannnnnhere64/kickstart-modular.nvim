@@ -2,7 +2,7 @@ return {
   {
     'nvimdev/indentmini.nvim',
     config = function()
-      require('indentmini').setup {}
+      require('indentmini').setup() -- use default config
     end,
   },
 }
