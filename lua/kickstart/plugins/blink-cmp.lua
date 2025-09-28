@@ -21,13 +21,32 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
+        config = function()
+          local ls = require 'luasnip'
+
+          vim.keymap.set({ 'i', 's' }, '<Tab>', function()
+            if ls.expand_or_jumpable() then
+              ls.expand_or_jump()
+            else
+              vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n')
+            end
+          end, { silent = true })
+
+          vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+            if ls.jumpable(-1) then
+              ls.jump(-1)
+            else
+              vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, false, true), 'n')
+            end
+          end, { silent = true })
+        end,
         opts = {},
       },
       'folke/lazydev.nvim',
