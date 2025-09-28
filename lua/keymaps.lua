@@ -57,3 +57,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('i', 'jk', '<ESC>')
 -- escape on terminal using jk
 vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { noremap = true })
+
+-- move code via visual selection up or down using shift + j/k
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
