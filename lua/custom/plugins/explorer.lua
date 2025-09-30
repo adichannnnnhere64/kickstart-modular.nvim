@@ -16,7 +16,7 @@ return {
     keys = {
       {
         '-',
-        '<CMD>Oil --float<CR>',
+        '<CMD>Oil<CR>',
         mode = 'n',
         desc = 'Open parent directory',
       },

@@ -9,7 +9,11 @@ return {
       -- 'nvim-treesitter/nvim-treesitter',
       --
       -- 'marilari88/neotest-vitest',
-      'V13Axel/neotest-pest',
+      {
+        'V13Axel/neotest-pest',
+        commit = 'e92131bde9c24e632c4ad76124f545d098127e60',
+      },
+      'olimorris/neotest-phpunit',
     },
     cmd = { 'Neotest' },
     ft = { 'php' },
@@ -57,13 +61,20 @@ return {
         adapters = {
           -- Add vitest first
           -- require 'neotest-vitest',
+          --
+          require 'neotest-phpunit' {
+            phpunit_cmd = function()
+              return '/usr/local/bin/dphpunit'
+            end,
+            root_ignore_files = { 'tests/Pest.php' },
+          },
 
           -- Pest adapter with comprehensive configuration
           require 'neotest-pest' {
             -- Pest command - adjust based on your setup
-            pest_cmd = function()
-              return 'vendor/bin/pest'
-            end,
+            -- pest_cmd = function()
+            --   return 'vendor/bin/pest'
+            -- end,
 
             -- Sail/Docker configuration
             sail_enabled = function()
@@ -71,13 +82,13 @@ return {
             end,
 
             -- Your Docker exec command
-            sail_executable = { 'docker', 'exec', 'phpx' },
+            -- sail_executable = { 'docker', 'exec', 'phpx' },
 
             -- Docker path mapping
-            sail_project_path = '/var/www/html',
+            -- sail_project_path = '/var/www/html',
 
             -- Test file patterns - make sure your test files match
-            test_file_suffixes = { 'Test.php', '_test.php', 'PestTest.php' },
+            -- test_file_suffixes = { 'Test.php', '_test.php', 'PestTest.php' },
 
             -- Directories to ignore
             ignore_dirs = { 'vendor', 'node_modules', '.git' },
@@ -93,6 +104,8 @@ return {
 
             -- Enable compact output
             compact = false,
+
+            -- root_ignore_files = { 'tests/TestCase.php' },
 
             -- Root pattern detection
             root_pattern = function(path)
