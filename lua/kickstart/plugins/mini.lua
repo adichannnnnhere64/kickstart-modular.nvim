@@ -2,6 +2,22 @@ return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
+      -- require('mini.sessions').setup {
+      --   directory = vim.fn.stdpath 'data' .. '/sessions',
+      --   autoread = false,
+      --   autowrite = true,
+      -- }
+
+      local session = require 'mini.sessions'
+
+      session.setup {}
+
+      vim.api.nvim_create_autocmd('VimLeavePre', {
+        callback = function()
+          require('mini.sessions').write 'last_session'
+        end,
+      })
+
       -- Better Around/Inside textobjects
       --
       -- Examples:
