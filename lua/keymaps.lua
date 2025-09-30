@@ -61,3 +61,23 @@ vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { noremap = true })
 -- move code via visual selection up or down using shift + j/k
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+
+vim.keymap.set('n', '<leader>nt', '<cmd>tabnew<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'H', '<cmd>tabprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'L', '<cmd>tabnext<CR>', { noremap = true, silent = true })
+
+-- Resize with arrows
+vim.keymap.set('n', '<C-S-Down>', ':resize +2<CR>', { desc = 'Resize Horizontal Split Down' })
+vim.keymap.set('n', '<C-S-Up>', ':resize -2<CR>', { desc = 'Resize Horizontal Split Up' })
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Resize Vertical Split Down' })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Resize Vertical Split Up' })
+
+-- Copy file paths
+
+vim.keymap.set('n', '<leader>cf', '<cmd>let @+ = expand("%")<CR>', { desc = 'Copy File Name' })
+vim.keymap.set('n', '<leader>cp', '<cmd>let @+ = expand("%:p")<CR>', { desc = 'Copy File Path' })
+
+-- Jump to plugin management file
+vim.keymap.set('n', '<leader>gp', '<cmd>e ~/.config/nvim/lua/custom/<CR>', { desc = 'Jump to configuration file' })
+
+vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word under cursor' })

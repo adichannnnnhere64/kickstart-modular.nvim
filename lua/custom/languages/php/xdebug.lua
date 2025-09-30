@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd('FileType', {
       },
     }
 
-    vim.notify('PHP debugging ready!', vim.log.levels.INFO)
+    -- vim.notify('PHP debugging ready!', vim.log.levels.INFO)
   end,
   once = true,
 })

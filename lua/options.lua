@@ -72,3 +72,11 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- vim.api.nvim_create_autocmd('VimLeavePre', {
+--   callback = function()
+--     -- Save session automatically
+--     vim.cmd('mksession! ' .. vim.fn.stdpath 'data' .. '/session.vim')
+--   end,
+-- })
+--
