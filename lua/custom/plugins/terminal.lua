@@ -11,7 +11,7 @@ return {
             return math.floor(vim.o.columns * 0.4) -- 40% of screen width
           end
         end,
-        open_mapping = [[<C-\>]],
+        open_mapping = [[<C-/>]],
         shade_terminals = true,
         shading_factor = 2,
         start_in_insert = true,
