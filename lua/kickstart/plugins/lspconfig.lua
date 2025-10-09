@@ -254,7 +254,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'laravel-ls',
-        'duster-ls',
+        'duster',
         'eslint_d',
         'intelephense',
         'typescript-language-server',
