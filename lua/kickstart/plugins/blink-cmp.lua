@@ -81,8 +81,13 @@ return {
 
         ['<Tab>'] = { 'select_next', 'fallback' },
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
-        ['<S-k>'] = { 'show_documentation', 'fallback' },
-        ['<S-l>'] = { 'show', 'fallback' },
+        ['<C-k>'] = { 'show_documentation', 'fallback' },
+        ['<C-l>'] = { 'show', 'fallback' },
+        ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+
+
+
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -101,8 +106,9 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'codeium' },
+        default = { 'laravel', 'lsp', 'path', 'snippets', 'lazydev', 'codeium' },
         providers = {
+          laravel = { name = 'laravel', module = 'laravel.blink_source' },
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
         },
