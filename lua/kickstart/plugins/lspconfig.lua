@@ -221,6 +221,25 @@ return {
         -- ts_ls = {},
         --
 
+        intelephense = {
+          settings = {
+            intelephense = {
+              exclude = {
+                '**/vendor/**',
+                '**/node_modules/**',
+                '**/.git/**',
+                '**/tmp/**',
+                '**/test/**',
+                '**/tests/**',
+              },
+              -- excl
+              files = {
+                maxSize = 5000000,
+              },
+            },
+          },
+        },
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },

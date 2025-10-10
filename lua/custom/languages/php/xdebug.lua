@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd('FileType', {
         pathMappings = {
           ['/var/www/html'] = '${workspaceFolder}',
         },
-        -- hostname = '0.0.0.0',
+        hostname = '0.0.0.0',
         timeout = 30000,
       },
     }
