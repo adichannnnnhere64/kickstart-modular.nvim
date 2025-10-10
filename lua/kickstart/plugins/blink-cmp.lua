@@ -86,9 +86,6 @@ return {
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
         ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 
-
-
-
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
@@ -106,7 +103,7 @@ return {
       },
 
       sources = {
-        default = { 'laravel', 'lsp', 'path', 'snippets', 'lazydev', 'codeium' },
+        default = { 'lsp', 'laravel', 'path', 'snippets', 'lazydev', 'codeium' },
         providers = {
           laravel = { name = 'laravel', module = 'laravel.blink_source' },
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },

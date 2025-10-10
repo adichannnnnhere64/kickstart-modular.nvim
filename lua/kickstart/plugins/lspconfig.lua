@@ -74,6 +74,10 @@ return {
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
+          map('gvd', function()
+            vim.diagnostic.open_float(nil, { focusable = true })
+          end, 'Focus Diagnostic')
+
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
@@ -278,7 +282,6 @@ return {
         'intelephense',
         'typescript-language-server',
       })
- 
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
