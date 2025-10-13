@@ -34,7 +34,7 @@ return {
         php = { 'pint' },
         yaml = { 'yamlfix' },
         html = { 'prettier' },
-        json = { 'prettier' },
+        json = { 'biome' },
         yml = { 'yamlfix' },
         xml = { 'xmlformatter' },
         blade = { 'blade-formatter' },

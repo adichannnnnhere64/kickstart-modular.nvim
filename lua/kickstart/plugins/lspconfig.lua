@@ -30,6 +30,9 @@ return {
       'saghen/blink.cmp',
     },
     config = function()
+      -- Require lspconfig at the top
+      local lspconfig = require 'lspconfig'
+
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -226,8 +229,17 @@ return {
         --
 
         intelephense = {
+          cmd = { 'intelephense', '--stdio' },
+          filetypes = { 'php' },
+          root_dir = lspconfig.util.root_pattern('.git', 'composer.json'),
+          init_options = {
+            licenceKey = nil, -- if you have a license you can set it here
+          },
           settings = {
             intelephense = {
+              files = {
+                maxSize = 5000000,
+              },
               exclude = {
                 '**/vendor/**',
                 '**/node_modules/**',
@@ -235,10 +247,6 @@ return {
                 '**/tmp/**',
                 '**/test/**',
                 '**/tests/**',
-              },
-              -- excl
-              files = {
-                maxSize = 5000000,
               },
             },
           },
