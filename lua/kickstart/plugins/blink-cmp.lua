@@ -1,3 +1,5 @@
+local has_laravel = pcall(require, 'laravel.blink_source')
+
 return {
   { -- Autocompletion
     'saghen/blink.cmp',
@@ -103,12 +105,26 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'laravel', 'path', 'snippets', 'lazydev', 'codeium' },
-        providers = {
-          laravel = { name = 'laravel', module = 'laravel.blink_source' },
-          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-          codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+        default = {
+          'lsp',
+          has_laravel and 'laravel' or nil, -- only include if exists
+          'path',
+          'snippets',
+          'lazydev',
+          'codeium',
         },
+        providers = (function()
+          local providers = {
+            lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+            codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+          }
+
+          if has_laravel then
+            providers.laravel = { name = 'laravel', module = 'laravel.blink_source' }
+          end
+
+          return providers
+        end)(),
       },
 
       snippets = { preset = 'luasnip' },
