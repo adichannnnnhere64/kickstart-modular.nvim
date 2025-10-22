@@ -8,7 +8,19 @@ return {
       -- If the update/install notification doesn't show properly,
       -- you should also add here UI plugins like "folke/noice.nvim" or "stevearc/dressing.nvim"
     },
+
     opts = {
+      lspconfig = {
+        enabled = false,
+        options = {
+          language_server_highlight = {
+            enabled = false,
+          },
+          language_server_phpstan = {
+            enabled = false,
+          },
+        },
+      },
       -- you're options goes here
     },
     keys = {
