@@ -107,11 +107,11 @@ return {
       sources = {
         default = {
           'lsp',
-          has_laravel and 'laravel' or nil, -- only include if exists
           'path',
           'snippets',
           'lazydev',
           'codeium',
+          has_laravel and 'laravel' or nil, -- only include if exists
         },
         providers = (function()
           local providers = {

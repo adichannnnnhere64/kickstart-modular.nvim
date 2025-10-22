@@ -228,9 +228,10 @@ return {
         -- ts_ls = {},
         --
 
+
         intelephense = {
           cmd = { 'intelephense', '--stdio' },
-          filetypes = { 'php' },
+          filetypes = { 'php', 'blade' },
           root_dir = lspconfig.util.root_pattern('.git', 'composer.json'),
           init_options = {
             licenceKey = nil, -- if you have a license you can set it here
@@ -253,6 +254,7 @@ return {
         },
 
         lua_ls = {
+          filetypes = { 'lua'},
           -- cmd = { ... },
           -- filetypes = { ... },
           -- capabilities = {},
