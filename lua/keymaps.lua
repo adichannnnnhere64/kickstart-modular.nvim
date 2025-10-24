@@ -1,3 +1,4 @@
+local opts = { noremap = true, silent = true }
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -85,3 +86,21 @@ vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.api.nvim_set_keymap('n', '<C-c>', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<C-a>', 'ggVG', opts)
+
+vim.keymap.set('n', '<leader>x', function()
+  -- clear message history first
+  vim.cmd 'messages clear'
+
+  -- capture output from luafile
+  local file = vim.fn.expand '%'
+  vim.cmd 'redir => g:lua_output'
+  vim.cmd('silent! luafile ' .. file)
+  vim.cmd 'redir END'
+
+  -- open split and show the captured output
+  vim.cmd 'botright 10split'
+  vim.cmd 'enew'
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(vim.g.lua_output or '', '\n'))
+  vim.cmd 'setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile'
+end, { desc = 'Run Lua buffer and show output in split' })

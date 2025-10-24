@@ -232,7 +232,9 @@ return {
         intelephense = {
           cmd = { 'intelephense', '--stdio' },
           filetypes = { 'php', 'blade' },
-          root_dir = lspconfig.util.root_pattern('.git', 'composer.json'),
+          root_markers = { '.git', 'composer.json' },
+   
+
           init_options = {
             licenceKey = nil, -- if you have a license you can set it here
           },
@@ -241,14 +243,14 @@ return {
               files = {
                 maxSize = 5000000,
               },
-              exclude = {
-                '**/vendor/**',
-                '**/node_modules/**',
-                '**/.git/**',
-                '**/tmp/**',
-                '**/test/**',
-                '**/tests/**',
-              },
+              -- exclude = {
+              --   '**/vendor/**',
+              --   '**/node_modules/**',
+              --   '**/.git/**',
+              --   '**/tmp/**',
+              --   '**/test/**',
+              --   '**/tests/**',
+              -- },
             },
           },
         },

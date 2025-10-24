@@ -5,7 +5,7 @@ return {
     cmd = { 'Spectre' },
     keys = {
       {
-        '<leader>S',
+        '<leader>sp',
         function()
           require('spectre').toggle()
         end,

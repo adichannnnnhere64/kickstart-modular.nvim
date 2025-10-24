@@ -9,9 +9,9 @@ return {
     },
 
     keys = {
-      { '<leader>Rs', desc = 'Send request' },
-      { '<leader>Ra', desc = 'Send all requests' },
-      { '<leader>Rb', desc = 'Open scratchpad' },
+      { '<leader>ks', desc = 'Send request' },
+      { '<leader>ka', desc = 'Send all requests' },
+      { '<leader>kb', desc = 'Open scratchpad' },
     },
   },
 }

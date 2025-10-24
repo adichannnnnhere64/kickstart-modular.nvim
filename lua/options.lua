@@ -29,6 +29,8 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"     -- set an undo directory
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -37,7 +39,7 @@ vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 100
 
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
