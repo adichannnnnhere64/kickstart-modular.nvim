@@ -23,11 +23,6 @@ require('lazy').setup({
   -- modular approach: using `require 'path.name'` will
   -- include a plugin definition from file lua/path/name.lua
 
-
-  require 'core.mason-path',
-
-  require 'core.lsp',
-
   require 'kickstart.plugins.gitsigns',
 
   require 'kickstart.plugins.which-key',
@@ -40,18 +35,21 @@ require('lazy').setup({
 
   require 'kickstart.plugins.blink-cmp',
 
-  require 'kickstart.plugins.tokyonight',
+  --  require 'kickstart.plugins.tokyonight',
 
   require 'kickstart.plugins.todo-comments',
 
   require 'kickstart.plugins.mini',
 
+  require 'core.mason-path',
+
+  require 'core.lsp',
+
   require 'kickstart.plugins.treesitter',
 
   require 'config.autocmds',
 
-
---  require 'config.mason-verify',
+  --  require 'config.mason-verify',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
