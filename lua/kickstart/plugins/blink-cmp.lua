@@ -1,5 +1,10 @@
 local has_laravel = pcall(require, 'laravel.blink_source')
 
+local function has_file()
+  local name = vim.api.nvim_buf_get_name(0)
+  return name ~= nil and name ~= ''
+end
+
 return {
   { -- Autocompletion
     'saghen/blink.cmp',
@@ -57,6 +62,18 @@ return {
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
+      enabled = function()
+        local ft = vim.bo.filetype
+        local bt = vim.bo.buftype
+        local name = vim.api.nvim_buf_get_name(0)
+
+        -- disable Blink in Oil or buffers without a file
+        if ft == 'oil' or bt ~= '' or name == '' then
+          return false
+        end
+
+        return true
+      end,
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
         --   <c-y> to accept ([y]es) the completion.
@@ -110,14 +127,19 @@ return {
           'path',
           'snippets',
           'lazydev',
-          'codeium',
+          (has_file() and 'codeium' or nil),
+          -- 'codeium',
           has_laravel and 'laravel' or nil, -- only include if exists
         },
         providers = (function()
           local providers = {
             lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-            codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+            -- codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
           }
+
+          if has_file() then
+            providers.codeium = { name = 'Codeium', module = 'codeium.blink', async = true }
+          end
 
           if has_laravel then
             providers.laravel = { name = 'laravel', module = 'laravel.blink_source' }
