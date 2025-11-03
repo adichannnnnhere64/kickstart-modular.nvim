@@ -82,3 +82,9 @@ vim.o.confirm = true
 --   end,
 -- })
 --
+vim.o.shell = vim.fn.system("which zsh"):gsub("\n", "")
+
+-- vim.o.shell = "/usr/sbin/bash"
+-- vim.o.shellcmdflag = "-c"
+-- vim.o.shellquote = ""
+-- vim.o.shellxquote = ""

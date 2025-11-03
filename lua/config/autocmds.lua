@@ -18,10 +18,16 @@ api.nvim_create_autocmd('LspAttach', {
 
     map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
-    map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-    map('<S-j>', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-    map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    -- map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    -- map('<S-j>', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    -- map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    -- map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    --
+
+    map('grd', Snacks.picker.lsp_definitions, '[G]oto [D]efinition')
+    map('<S-j>', Snacks.picker.lsp_definitions, '[G]oto [D]efinition')
+    map('grD', Snacks.picker.lsp_declarations, '[G]oto [D]eclaration')
+    map('grr', Snacks.picker.lsp_references, '[G]oto [R]eferences')
   end,
 })
 
