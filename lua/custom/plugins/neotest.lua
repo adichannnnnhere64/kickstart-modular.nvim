@@ -78,7 +78,7 @@ return {
 
             -- Sail/Docker configuration
             sail_enabled = function()
-              return true -- Enable since you're using Docker
+              return false -- Enable since you're using Docker
             end,
 
             -- Your Docker exec command
