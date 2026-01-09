@@ -62,12 +62,12 @@ return {
           -- Add vitest first
           -- require 'neotest-vitest',
           --
-          require 'neotest-phpunit' {
-            phpunit_cmd = function()
-              return '/usr/local/bin/dphpunit'
-            end,
-            root_ignore_files = { 'tests/Pest.php' },
-          },
+          -- require 'neotest-phpunit' {
+          --   phpunit_cmd = function()
+          --     return '/usr/local/bin/dphpunit'
+          --   end,
+          --   root_ignore_files = { 'tests/Pest.php' },
+          -- },
 
           -- Pest adapter with comprehensive configuration
           require 'neotest-pest' {

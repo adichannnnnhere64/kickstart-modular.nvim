@@ -127,7 +127,7 @@ return {
           'path',
           'snippets',
           'lazydev',
-          (has_file() and 'codeium' or nil),
+          -- (has_file() and 'codeium' or nil),
           -- 'codeium',
           has_laravel and 'laravel' or nil, -- only include if exists
         },
@@ -137,9 +137,9 @@ return {
             -- codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
           }
 
-          if has_file() then
-            providers.codeium = { name = 'Codeium', module = 'codeium.blink', async = true }
-          end
+          -- if has_file() then
+          --   providers.codeium = { name = 'Codeium', module = 'codeium.blink', async = true }
+          -- end
 
           if has_laravel then
             providers.laravel = { name = 'laravel', module = 'laravel.blink_source' }
