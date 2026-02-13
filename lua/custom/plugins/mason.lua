@@ -6,6 +6,10 @@ return {
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
     opts = {
+      registries = {
+        'github:mason-org/mason-registry',
+        'github:Crashdummyy/mason-registry',
+      },
       ensure_installed = {
         -- LSP servers (matching your vim.lsp.enable() config)
         'lua-language-server', -- Lua LSP
