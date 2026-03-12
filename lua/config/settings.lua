@@ -1,3 +1,4 @@
+-- [[ UI settings ]]
 -- require('kanagawa').setup {
 --   transparent = true,
 -- }
@@ -31,4 +32,3 @@ vim.opt.termguicolors = true
 --   transparent_mode = false,
 -- }
 -- vim.cmd 'colorscheme gruvbox'
-

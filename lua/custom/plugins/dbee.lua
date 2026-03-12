@@ -1,5 +1,6 @@
 return {
   'kndndrj/nvim-dbee',
+  cmd = { "Dbee", "DbeeToggle" },
   dependencies = {
     'MunifTanjim/nui.nvim',
   },

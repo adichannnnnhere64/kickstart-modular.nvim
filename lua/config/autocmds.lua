@@ -1,7 +1,7 @@
 local api = vim.api
 
 api.nvim_create_autocmd('LspAttach', {
-  group = api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  group = api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
     local map = function(keys, func, desc, mode)
       mode = mode or 'n'
@@ -24,10 +24,20 @@ api.nvim_create_autocmd('LspAttach', {
     -- map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     --
 
-    map('grd', Snacks.picker.lsp_definitions, '[G]oto [D]efinition')
-    map('<S-j>', Snacks.picker.lsp_definitions, '[G]oto [D]efinition')
-    map('grD', Snacks.picker.lsp_declarations, '[G]oto [D]eclaration')
-    map('grr', Snacks.picker.lsp_references, '[G]oto [R]eferences')
+    local function with_snacks_or_fallback(snacks_fn, fallback_fn)
+      return function()
+        local picker = _G.Snacks and _G.Snacks.picker
+        if picker and picker[snacks_fn] then
+          return picker[snacks_fn]()
+        end
+        return fallback_fn()
+      end
+    end
+
+    map('grd', with_snacks_or_fallback('lsp_definitions', vim.lsp.buf.definition), '[G]oto [D]efinition')
+    map('<S-j>', with_snacks_or_fallback('lsp_definitions', vim.lsp.buf.definition), '[G]oto [D]efinition')
+    map('grD', with_snacks_or_fallback('lsp_declarations', vim.lsp.buf.declaration), '[G]oto [D]eclaration')
+    map('grr', with_snacks_or_fallback('lsp_references', vim.lsp.buf.references), '[G]oto [R]eferences')
   end,
 })
 

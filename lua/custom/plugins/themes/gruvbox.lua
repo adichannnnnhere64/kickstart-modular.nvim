@@ -3,4 +3,5 @@ return { {
   opts = {
     transparent = false,
   },
+  lazy = true,
 } }

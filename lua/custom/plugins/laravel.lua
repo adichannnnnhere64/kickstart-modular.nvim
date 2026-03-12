@@ -1,6 +1,7 @@
 return {
   {
     'adibhanna/laravel.nvim',
+    lazy = true,
     dependencies = {
       'MunifTanjim/nui.nvim',
       'nvim-lua/plenary.nvim',

@@ -1,3 +1,6 @@
+local M = {}
+
+function M.setup()
 vim.lsp.enable {
   'html-ls',
   'css-ls',
@@ -381,4 +384,6 @@ vim.opt.statusline = table.concat({
   ' %p%%', -- Percentage through file
 }, ' ')
 
-return {}
+end
+
+return M

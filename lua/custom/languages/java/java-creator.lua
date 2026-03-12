@@ -30,7 +30,6 @@ return {
     })
   end,
   ft = 'java',
-  event = 'VeryLazy',
   dependencies = {
     { 'rcarriga/nvim-notify', optional = true },
   },
