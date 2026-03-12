@@ -20,16 +20,11 @@ return {
       vim.g.db_ui_use_nvim_notify = 1
       vim.g.db_ui_win_position = "left"
 
-      require("which-key").register {
-        ["<leader>D"] = {
-          name = "󰆼 Db Tools",
-          u = { "<cmd>DBUIToggle<cr>", " DB UI Toggle" },
-          f = { "<cmd>DBUIFindBuffer<cr>", " DB UI Find buffer" },
-          r = { "<cmd>DBUIRenameBuffer<cr>", " DB UI Rename buffer" },
-          l = { "<cmd>DBUILastQueryInfo<cr>", " DB UI Last query infos" },
-        },
-      }
+      vim.keymap.set('n', '<leader>D', '<Nop>', { desc = '󰆼 Db Tools' })
+      vim.keymap.set('n', '<leader>Du', '<cmd>DBUIToggle<cr>', { desc = 'DB UI Toggle' })
+      vim.keymap.set('n', '<leader>Df', '<cmd>DBUIFindBuffer<cr>', { desc = 'DB UI Find buffer' })
+      vim.keymap.set('n', '<leader>Dr', '<cmd>DBUIRenameBuffer<cr>', { desc = 'DB UI Rename buffer' })
+      vim.keymap.set('n', '<leader>Dl', '<cmd>DBUILastQueryInfo<cr>', { desc = 'DB UI Last query info' })
     end,
   },
 }
-
