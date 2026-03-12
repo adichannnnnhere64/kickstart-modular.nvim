@@ -1,4 +1,3 @@
-local blink = require("blink.cmp")
 return {
     cmd = { "rust-analyzer" },
     root_markers = { "Cargo.lock" },

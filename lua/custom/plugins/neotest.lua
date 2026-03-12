@@ -68,6 +68,7 @@ return {
           --   end,
           --   root_ignore_files = { 'tests/Pest.php' },
           -- },
+		require 'neotest-java',
 
           -- Pest adapter with comprehensive configuration
           require 'neotest-pest' {

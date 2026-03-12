@@ -16,8 +16,8 @@ return {
     config = function()
       require('laravel').setup {
         sail = {
-          enabled = true,
-          auto_detect = true,
+          enabled = false,
+          auto_detect = false,
         },
       }
     end,

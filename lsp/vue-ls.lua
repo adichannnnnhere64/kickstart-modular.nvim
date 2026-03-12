@@ -1,5 +1,3 @@
-local blink = require("blink.cmp")
-
 -- Function to get TypeScript SDK path (prefer local, fallback to global)
 local function get_typescript_sdk()
     local local_sdk = vim.fn.getcwd() .. '/node_modules/typescript/lib'

@@ -5,6 +5,10 @@ return {
     require('java').setup {
       -- Use your SDKMAN Java 21 installation for JDTLS
       java_runtime = '/home/adrian/.sdkman/candidates/java/current',
+      java_test = {
+        enable = true,
+        -- version = '0.40.1',
+      },
       -- OR if you prefer a version string (nvim-java may auto-resolve):
       -- java_runtime = '21',
     }
