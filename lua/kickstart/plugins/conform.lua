@@ -35,6 +35,7 @@ return {
         yaml = { 'yamlfix' },
         html = { 'prettier' },
         json = { 'biome' },
+        java = { 'google-java-format' },
         yml = { 'yamlfix' },
         xml = { 'xmlformatter' },
         blade = { 'blade-formatter' },
