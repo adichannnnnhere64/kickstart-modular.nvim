@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+hidden=false
+no_ignore=false
+follow=false
+excludes=()
+exts=()
+positional=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --hidden) hidden=true ;;
+    --no-ignore) no_ignore=true ;;
+    -L) follow=true ;;
+    -E)
+      shift
+      [[ $# -gt 0 ]] && excludes+=("$1")
+      ;;
+    -e)
+      shift
+      [[ $# -gt 0 ]] && exts+=("$1")
+      ;;
+    --type) shift ;; --color) shift ;;
+    --*) ;; -*) ;;
+    *) positional+=("$1") ;;
+  esac
+  shift
+done
+
+pattern=""
+dirs=()
+if (( ${#positional[@]} >= 1 )); then
+  pattern="${positional[0]}"
+  if (( ${#positional[@]} > 1 )); then
+    dirs=("${positional[@]:1}")
+  fi
+fi
+
+cmd=(rg --files --no-messages --color never)
+$hidden && cmd+=(--hidden)
+$no_ignore && cmd+=(--no-ignore)
+$follow && cmd+=(-L)
+
+for e in "${excludes[@]}"; do
+  cmd+=(-g "!${e}" -g "!${e}/**")
+done
+
+for ext in "${exts[@]}"; do
+  cmd+=(-g "*.${ext}")
+done
+
+if (( ${#dirs[@]} > 0 )); then
+  cmd+=("${dirs[@]}")
+fi
+
+out="$("${cmd[@]}" 2>/dev/null || true)"
+if [[ -z "${out}" ]]; then
+  exit 0
+fi
+
+if [[ -n "${pattern}" ]]; then
+  printf '%s\n' "${out}" | rg --no-messages --color never -e "${pattern}" 2>/dev/null || true
+else
+  printf '%s\n' "${out}"
+fi
+
+exit 0
+

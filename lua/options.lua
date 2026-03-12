@@ -82,7 +82,15 @@ vim.o.confirm = true
 --   end,
 -- })
 --
-vim.o.shell = vim.fn.system("which zsh"):gsub("\n", "")
+do
+  local zsh = vim.fn.exepath('zsh')
+  if zsh == '' and vim.fn.executable('/bin/zsh') == 1 then
+    zsh = '/bin/zsh'
+  end
+  if zsh ~= '' then
+    vim.o.shell = zsh
+  end
+end
 
 -- vim.o.shell = "/usr/sbin/bash"
 -- vim.o.shellcmdflag = "-c"
