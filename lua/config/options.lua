@@ -20,7 +20,19 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 -- vim.schedule(function()
---   vim.o.clipboard = 'unnamedplus'
+vim.g.clipboard = {
+  name = 'wsl-clipboard',
+  copy = {
+    ['+'] = 'clip.exe',
+    ['*'] = 'clip.exe',
+  },
+  paste = {
+    ['+'] = 'powershell.exe -c Get-Clipboard',
+    ['*'] = 'powershell.exe -c Get-Clipboard',
+  },
+  cache_enabled = 0,
+}
+vim.o.clipboard = 'unnamedplus'
 -- end)
 
 -- Enable break indent
@@ -29,7 +41,7 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"     -- set an undo directory
+vim.opt.undodir = vim.fn.stdpath 'data' .. '/undo' -- set an undo directory
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -90,8 +102,8 @@ vim.o.confirm = true
 -- })
 --
 do
-  local zsh = vim.fn.exepath('zsh')
-  if zsh == '' and vim.fn.executable('/bin/zsh') == 1 then
+  local zsh = vim.fn.exepath 'zsh'
+  if zsh == '' and vim.fn.executable '/bin/zsh' == 1 then
     zsh = '/bin/zsh'
   end
   if zsh ~= '' then
