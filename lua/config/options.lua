@@ -15,25 +15,21 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
+-- Sync clipboard between OS and Neovim (OSC 52 for tmux compatibility)
 --  See `:help 'clipboard'`
--- vim.schedule(function()
 vim.g.clipboard = {
-  name = 'wsl-clipboard',
+  name = 'OSC 52',
   copy = {
-    ['+'] = 'clip.exe',
-    ['*'] = 'clip.exe',
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
   },
   paste = {
-    ['+'] = 'powershell.exe -c Get-Clipboard',
-    ['*'] = 'powershell.exe -c Get-Clipboard',
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
   },
-  cache_enabled = 0,
 }
-vim.o.clipboard = 'unnamedplus'
--- end)
+-- Use "+y to copy to system clipboard, regular y stays internal
+-- vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
