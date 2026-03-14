@@ -38,7 +38,7 @@ return {
 
         -- Optional but useful additions
         "markdownlint", -- Markdown linting
-        "yamllint",     -- YAML linting
+        -- "yamllint",     -- YAML linting
         "jsonlint",     -- JSON linting
       },
     },
