@@ -47,10 +47,12 @@ vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 100
+vim.o.updatetime = 50
 
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
+
+vim.o.ttimeoutlen=10
 
 -- Configure how new splits should be opened
 vim.o.splitright = true

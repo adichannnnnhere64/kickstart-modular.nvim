@@ -104,3 +104,9 @@ vim.keymap.set('n', '<leader>x', function()
   vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(vim.g.lua_output or '', '\n'))
   vim.cmd 'setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile'
 end, { desc = 'Run Lua buffer and show output in split' })
+
+-- Navigate to the next page in the PDF
+vim.keymap.set("n", "<leader>ll", "<cmd>:lua require('pdfview.renderer').next_page()<CR>", { desc = "PDFview: Next page" })
+
+-- Navigate to the previous page in the PDF
+vim.keymap.set("n", "<leader>hh", "<cmd>:lua require('pdfview.renderer').previous_page()<CR>", { desc = "PDFview: Previous page" })

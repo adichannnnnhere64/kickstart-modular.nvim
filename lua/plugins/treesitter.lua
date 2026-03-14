@@ -26,6 +26,22 @@ return {
     },
     config = function(_, opts)
       require('nvim-treesitter.config').setup(opts)
+      vim.api.nvim_create_autocmd('Filetype', {
+        callback = function(args)
+          local _, treesitter = pcall(require, 'nvim-treesitter')
+          if _ == nil or not treesitter then
+            -- we weren't able to import tree sitter
+            return
+          end
+          if not vim.list_contains(treesitter.get_installed(), vim.treesitter.language.get_lang(args.match)) then
+            -- We don't have a parser for this filetype
+            return
+          end
+          -- Handle auto install?
+          -- Handle disablement
+          vim.treesitter.start(args.buf)
+        end,
+      })
     end,
   },
 }
