@@ -79,5 +79,27 @@ vim.api.nvim_create_autocmd('FileType', {
    end,
  })
 
+ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufWritePost", "TextChanged", "TextChangedI" }, {
+  callback = function()
+    if vim.bo.buftype == "nofile" or vim.bo.filetype == "" then return end
+    
+
+    local filename = vim.fn.expand("%:t")  -- Just filename, no path
+    if filename == "" then return end
+
+    
+    local ns = vim.api.nvim_create_namespace("filename_float")
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    
+    vim.api.nvim_buf_set_extmark(0, ns, 0, 0, {
+      virt_text = { { filename, "Comment" } },
+
+      virt_text_pos = "right_align",
+    })
+  end,
+
+})
+
+
 return {}
 

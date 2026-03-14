@@ -5,7 +5,8 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = false
 vim.o.laststatus = 3
-vim.o.fillchars = "eob: "
+vim.o.fillchars = 'eob: '
+vim.o.statusline = "%!v:lua.require('core.buffer_path').statusline()"
 
 do
   local deprecate = vim.deprecate
