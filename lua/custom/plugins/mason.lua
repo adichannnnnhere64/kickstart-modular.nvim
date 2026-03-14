@@ -37,9 +37,9 @@ return {
         'shellcheck', -- Shell linter
 
         -- Optional but useful additions
-        -- "markdownlint", -- Markdown linting
-        -- "yamllint",     -- YAML linting
-        -- "jsonlint",     -- JSON linting
+        "markdownlint", -- Markdown linting
+        "yamllint",     -- YAML linting
+        "jsonlint",     -- JSON linting
       },
     },
     config = function(_, opts)

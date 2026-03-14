@@ -63,9 +63,10 @@ vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 
-vim.keymap.set('n', '<leader>nt', '<cmd>tabnew<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-T>', '<cmd>tabnew<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', 'H', '<cmd>tabprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', 'L', '<cmd>tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Q>', '<cmd>tabclose<CR>', { noremap = true, silent = true, desc = 'Close current tab' })
 
 -- Resize with arrows
 vim.keymap.set('n', '<C-S-Down>', ':resize +2<CR>', { desc = 'Resize Horizontal Split Down' })
