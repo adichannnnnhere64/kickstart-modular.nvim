@@ -7,7 +7,7 @@ return {
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format { async = false, lsp_format = 'fallback' }
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -15,6 +15,12 @@ return {
     },
     opts = {
       notify_on_error = false,
+      format_on_save = function(bufnr)
+        local ft = vim.bo[bufnr].filetype
+        if ft == 'http' or ft == 'rest' then
+          return { timeout_ms = 1000, lsp_format = 'fallback' }
+        end
+      end,
       formatters_by_ft = {
         lua = { 'stylua' },
         php = { 'pint' },

@@ -4,6 +4,9 @@ vim.filetype.add({
     [".env"] = "sh",
     [".envrc"] = "sh",
     ["*.env"] = "sh",
-    ["*.envrc"] = "sh"
-  }
+    ["*.envrc"] = "sh",
+  },
+  extension = {
+    http = "http",
+  },
 })

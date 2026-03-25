@@ -111,3 +111,17 @@ vim.keymap.set("n", "<leader>ll", "<cmd>:lua require('pdfview.renderer').next_pa
 
 -- Navigate to the previous page in the PDF
 vim.keymap.set("n", "<leader>hh", "<cmd>:lua require('pdfview.renderer').previous_page()<CR>", { desc = "PDFview: Previous page" })
+
+vim.keymap.set("n", "<leader>!t", function()
+  local oil = require("oil")
+  local dir = oil.get_current_dir()
+
+  if dir then
+    vim.cmd("split | terminal cd " .. vim.fn.fnameescape(dir) .. " && $SHELL")
+  else
+    vim.cmd("terminal")
+  end
+
+  vim.cmd("startinsert")
+end, { desc = "Open terminal in Oil directory" })
+

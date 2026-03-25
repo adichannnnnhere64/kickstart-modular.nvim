@@ -2,7 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Use the correct main module
+    main = 'nvim-treesitter.config',
     opts = {
       ensure_installed = {
         'bash',
@@ -14,6 +14,7 @@ return {
         'markdown',
         'markdown_inline',
         'query',
+        'kulala_http',
         'vim',
         'vimdoc',
       },
@@ -26,7 +27,7 @@ return {
     },
     config = function(_, opts)
       -- The setup call automatically handles attaching to filetypes
-      require('nvim-treesitter.configs').setup(opts)
+      require('nvim-treesitter.config').setup(opts)
     end,
   },
 }
