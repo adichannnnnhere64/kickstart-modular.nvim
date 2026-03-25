@@ -2,7 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.config',
+    main = 'nvim-treesitter.configs',
     opts = {
       ensure_installed = {
         'bash',
@@ -27,7 +27,7 @@ return {
     },
     config = function(_, opts)
       -- The setup call automatically handles attaching to filetypes
-      require('nvim-treesitter.config').setup(opts)
+      require('nvim-treesitter.configs').setup(opts)
     end,
   },
 }

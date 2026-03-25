@@ -125,3 +125,13 @@ vim.keymap.set("n", "<leader>!t", function()
   vim.cmd("startinsert")
 end, { desc = "Open terminal in Oil directory" })
 
+-- vim.keymap.set("n", "<leader>!", function()
+--   local dir = require("oil").get_current_dir()
+--   local cmd = vim.fn.input("Run in Oil dir: ")
+--
+--   if cmd == nil or cmd == "" then return end
+--
+--   vim.cmd("terminal cd " .. dir .. " && " .. cmd)
+-- end, { desc = "Run command in Oil dir (native input)" })
+--
+
